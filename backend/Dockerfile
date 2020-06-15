@@ -1,10 +1,10 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 RUN apt-get update \
     && apt-get install -yq --no-install-recommends \
     python3 \
     python3-pip
-RUN pip3 install --upgrade pip==9.0.3 \
+RUN pip3 install --upgrade pip \
     && pip3 install setuptools
 
 # for flask web server
