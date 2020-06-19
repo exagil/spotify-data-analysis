@@ -12,6 +12,8 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from utils import get_data_df, get_genre_df
 
+
+
 # declare constants
 HOST = '0.0.0.0'
 PORT = 5000
@@ -79,50 +81,14 @@ def get_avg_duration_of_popular_songs_of_2020():
 # analysis endpoint
 @app.route('/api/analysis', methods=['GET'])
 def analysis():
-    data_df = get_data_df()
-    cluster_features = ['liveness', 'loudness', 'tempo', 'valence', 'acousticness', 'danceability', 'instrumentalness', 'energy', 'speechiness']
-    df_cluster = data_df[cluster_features]
-    scaler = StandardScaler()
-    X_std = scaler.fit_transform(np.array(df_cluster))
-
-    ss_dist = []
-    K = range(1, 11)
-    for k in K:
-        km = KMeans(n_clusters=k, init='k-means++', random_state=123)
-        km = km.fit(X_std)
-        ss_dist.append(km.inertia_)
-
-    elbow_fig = plt.figure()
-    plt.plot(K, ss_dist, 'bx-')
-    plt.xlabel('k')
-    plt.ylabel('Sum of squared distances')
-    plt.title('Elbow Method For Optimal k')
-    buf1 = BytesIO()
-    plt.savefig(buf1, format='png')
-
-    k = 2
-    km = KMeans(n_clusters=k, init='k-means++', random_state=123)
-    km = km.fit(X_std)
-    km_cluster = km.fit_predict(X_std)
-
-    cluster_map = pd.DataFrame()
-    cluster_map['data_index'] = df_cluster.index.values
-    cluster_map['cluster'] = km.labels_
-
-    pca = PCA(n_components=2)
-    principalComponents = pca.fit_transform(df_cluster)
-    principalDf = pd.DataFrame(data=principalComponents
-                               , columns=['principal component 1', 'principal component 2'])
-
-    plt.figure()
-    plt.scatter(principalDf['principal component 1'], principalDf['principal component 2'], s=100, c=km_cluster)
-    plt.title("Scatter Plot")
-    buf = BytesIO()
-    plt.savefig(buf, format='png')
-    return jsonify({
-        'fig': base64.b64encode(buf.getbuffer()).decode("ascii"),
-        'elbow_fig': base64.b64encode(buf1.getbuffer()).decode("ascii")
-    })
+    response_obj = {}
+    elbow_image = open('./assets/elbow.png', 'rb')  # open binary file in read mode
+    elbow_image_read = elbow_image.read()
+    response_obj['elbow_fig'] = base64.encodebytes(elbow_image_read).decode("ascii")
+    cluster_image = open('./assets/clusters.png', 'rb')  # open binary file in read mode
+    clusters_image_read = cluster_image.read()
+    response_obj['fig'] = base64.encodebytes(clusters_image_read).decode("ascii")
+    return jsonify(response_obj)
 
 
 if __name__ == '__main__':
