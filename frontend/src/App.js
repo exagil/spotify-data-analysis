@@ -67,7 +67,7 @@ export default class App extends React.Component  {
                   }
                   {this.state.popular_artists_2020 ? (
                     <div>
-                      <h4>Average duration of popular songs: {JSON.stringify(this.state.avg_duration)}</h4>
+                      <h4>Average duration of popular songs: {JSON.stringify(this.state.avg_duration)} seconds</h4>
                     </div>
                   ): (
                     <h4>Loading average duration of songs</h4>

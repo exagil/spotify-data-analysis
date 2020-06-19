@@ -76,7 +76,7 @@ def get_ten_most_popular_artists_of_2020():
 def get_avg_duration_of_popular_songs_of_2020():
     data_df = get_data_df()
     result_df = data_df.loc[data_df['year'] == 2020].sort_values(by='popularity', ascending = False).head(10)
-    return jsonify({"avg_duration" : result_df['duration_ms'].mean()})
+    return jsonify({"avg_duration" : (int)(result_df['duration_ms'].mean()/1000)})
 
 # analysis endpoint
 @app.route('/api/analysis', methods=['GET'])
