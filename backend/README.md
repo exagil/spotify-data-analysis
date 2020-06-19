@@ -18,7 +18,7 @@ You will need the following things properly installed on your computer:
 
 ## Installation
 
-* run `git clone https://github.com/caseyr003/flask-react-template.git`
+* run `git clone https://github.com/dhiraka/spotify-data-analysis.git`
 
 ## Running
 
@@ -30,9 +30,9 @@ To run the project locally follow the following steps:
 
 ## JSON API
 
-The JSON API is a test endpoint to start development
+The JSON API is an endpoint to start development
 
-* `http://localhost:5000/api/test`
+* `http://localhost:5000/`
 (returns a test json response)
 
 ## License

@@ -1,6 +1,6 @@
 # Flask-React Docker Template
 
-This project is a web app built with Python backend and ReactJS frontend to be used as a starter template.
+This project is a web app built with Python backend and ReactJS frontend to visualize spotify data.
 
 ## Built With
 
@@ -20,7 +20,7 @@ You will need the following things properly installed on your computer:
 
 ## Installation
 
-* run `git clone https://github.com/caseyr003/flask-react-template.git`
+* run `git clone https://github.com/dhiraka/spotify-data-analysis.git`
 
 ## Running
 
