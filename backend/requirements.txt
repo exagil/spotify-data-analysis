@@ -1,5 +1,6 @@
 backcall==0.2.0
 click==7.1.2
+cycler==0.10.0
 decorator==4.4.2
 Flask==1.1.2
 Flask-Cors==3.0.8
@@ -9,7 +10,11 @@ ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.17.0
 Jinja2==2.11.2
+joblib==0.15.1
+kiwisolver==1.2.0
 MarkupSafe==1.1.1
+matplotlib==3.2.1
+networkx==2.4
 numpy==1.18.5
 pandas==1.0.4
 parso==0.7.0
@@ -18,9 +23,15 @@ pickleshare==0.7.5
 prompt-toolkit==3.0.5
 ptyprocess==0.6.0
 Pygments==2.6.1
+pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2020.1
+scikit-fuzzy==0.4.2
+scikit-learn==0.23.1
+scipy==1.4.1
 six==1.15.0
+sklearn==0.0
+threadpoolctl==2.1.0
 traitlets==4.3.3
 wcwidth==0.2.4
 Werkzeug==1.0.1
