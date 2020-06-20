@@ -6,13 +6,8 @@ RUN apt-get update
 EXPOSE 3000
 EXPOSE 5000
 
-# set working directory
-ADD . /app
 WORKDIR /app
-
-COPY package.json /app
-RUN npm install
-COPY . /app
-
-# This is the runtime command for the container
-CMD yarn start
+COPY package.json yarn.lock ./
+RUN yarn
+COPY . ./
+RUN yarn build
