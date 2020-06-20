@@ -51,7 +51,6 @@ export default class App extends React.Component  {
     render(){
         return(
             <div>
-                <div>
                   {this.state.popular_artists_2020 ? (
                     <div>
                       <h4>Popular artists of 2020</h4>
@@ -73,11 +72,24 @@ export default class App extends React.Component  {
                     <h4>Loading average duration of songs</h4>
                   )
                   }
-                  
-                </div>
-                <img src={`data:image/jpeg;base64,${this.state.elbow_fig}`} />
-                <img src={`data:image/jpeg;base64,${this.state.fig}`} />
-                <TrendingGenresTable data={this.state.data} />
+                  {this.state.elbow_fig ? (
+                    <img src={`data:image/jpeg;base64,${this.state.elbow_fig}`} />
+                  ): (
+                    <h4>Loading elbow figure</h4>
+                  )
+                  }
+                  {this.state.fig ? (
+                    <img src={`data:image/jpeg;base64,${this.state.fig}`} />
+                  ): (
+                    <h4>Loading cluster image</h4>
+                  )
+                  }
+                  {this.state.data ? (
+                    <TrendingGenresTable data={this.state.data} />
+                  ): (
+                    <h4>Loading trending genres</h4>
+                  )
+                  }
             </div>
         );
     }
