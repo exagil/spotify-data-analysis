@@ -10,5 +10,9 @@ EXPOSE 5000
 ADD . /app
 WORKDIR /app
 
+COPY package.json /app
+RUN npm install
+COPY . /app
+
 # This is the runtime command for the container
 CMD yarn start
